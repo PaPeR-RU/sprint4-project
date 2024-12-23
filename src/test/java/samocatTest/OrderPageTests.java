@@ -52,8 +52,9 @@ public class OrderPageTests {
 
     @Before
     public void startUp() {
-        WebDriverManager.chromedriver().setup();
-        this.webDriver = new ChromeDriver();    // здесь тест падает на подтверждении оформления заказа
+        // WebDriverManager.chromedriver().setup();
+        System.setProperty("webdriver.chrome.driver", "D:\\JAVA\\JAVA Yandex\\Sprint_4_Project\\chromedriver.exe");
+        this.webDriver = new ChromeDriver();// здесь тест падает на подтверждении оформления заказа
         //webDriver = new SafariDriver();       // здесь тест проходит успешно
         this.webDriver.get(mainPageUrl);
     }
@@ -110,3 +111,4 @@ public class OrderPageTests {
 
         orderPage.makeOrder();
     }
+}
