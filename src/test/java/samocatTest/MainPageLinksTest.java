@@ -1,6 +1,6 @@
 package samocatTest;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import pageObjects.MainPage;
 import org.junit.After;
 import org.junit.Before;
@@ -9,6 +9,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import static org.junit.Assert.assertTrue;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class MainPageLinksTest {
     private WebDriver webDriver;

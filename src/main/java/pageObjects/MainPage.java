@@ -14,28 +14,36 @@ public class MainPage {
     private final By cookieAcceptButton = By.id("rcc-confirm-button"); // Кнопка "Принять куки"
     private final By yandexLogoLink = By.xpath(".//a[starts-with(@class,'Header_LogoYandex')]"); // Логотип Яндекс в шапке
     private final By scooterLogoLink = By.xpath(".//a[starts-with(@class,'Header_LogoScooter')]"); // Логотип Самокат в шапке
+
     public MainPage(WebDriver driver) {
         this.webDriver = driver;
     }
+
     public void waitForLoadItem(int index) {
         new WebDriverWait(this.webDriver, 3)
                 .until(ExpectedConditions.visibilityOf(this.webDriver.findElements(this.accordionItems).get(index)));
     }
+
     public void clickOnCookieAcceptButton() {
         this.webDriver.findElement(this.cookieAcceptButton).click();
     }
+
     public String getAccordionHeaderText(int index) {
         return this.webDriver.findElements(this.accordionHeaders).get(index).getText();
     }
+
     public String getAccordionItemText(int index) {
         return this.webDriver.findElements(this.accordionItems).get(index).getText();
     }
+
     public void clickAccordionHeader(int index) {
         this.webDriver.findElements(this.accordionHeaders).get(index).click();
     }
+
     public boolean isAccordionItemDisplayed(int index) {
         return this.webDriver.findElements(this.accordionItems).get(index).isDisplayed();
     }
+
     public void clickOrderButtonHeader() {
         this.webDriver.findElement(this.orderButtonHeader).click();
     }
@@ -43,12 +51,15 @@ public class MainPage {
     public void clickOrderButtonBody() {
         this.webDriver.findElement(this.orderButtonBody).click();
     }
+
     public String getYandexLogoLink() {
         return this.webDriver.findElement(this.yandexLogoLink).getAttribute("href");
     }
+
     public String getScooterLogoLink() {
         return this.webDriver.findElement(this.scooterLogoLink).getAttribute("href");
     }
+
     public boolean isYandexLogoLinkOpenedInNewTab() {
         String blanc = "_blank";
         String value = this.webDriver.findElement(this.yandexLogoLink).getAttribute("target");

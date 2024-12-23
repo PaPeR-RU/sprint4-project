@@ -1,9 +1,6 @@
 package samocatTest;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.chrome.ChromeDriver;
-import pageObjects.MainPage;
-import pageObjects.OrderPage;
 import org.hamcrest.MatcherAssert;
 import org.junit.After;
 import org.junit.Before;
@@ -11,6 +8,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import pageObjects.MainPage;
+import pageObjects.OrderPage;
 
 import static org.hamcrest.CoreMatchers.containsString;
 
@@ -42,9 +42,10 @@ public class OrderPageTests {
         this.color = color;
         this.comment = comment;
     }
+
     @Parameterized.Parameters(name = "Оформление заказа. Позитивный сценарий. Пользователь: {0} {1}")
     public static Object[][] setDataForOrder() {
-        return new Object[][] {
+        return new Object[][]{
                 {"Никита", "Абрамов", "Москва, Мажоров переулок, д. 14А", "Семёновская", "89653248965", "23.12.2024", "пятеро суток", "чёрный жемчуг", "Мой комментарий"},
                 {"Алла ", "Матросова", "Москва, ул. Маргелова, д. 3к2", "Беговая", "89425638782", "25.12.2024", "трое суток", "серая безысходность", "Побыстрее"},
         };
@@ -52,10 +53,8 @@ public class OrderPageTests {
 
     @Before
     public void startUp() {
-        // WebDriverManager.chromedriver().setup();
-        System.setProperty("webdriver.chrome.driver", "D:\\JAVA\\JAVA Yandex\\Sprint_4_Project\\chromedriver.exe");
-        this.webDriver = new ChromeDriver();// здесь тест падает на подтверждении оформления заказа
-        //webDriver = new SafariDriver();       // здесь тест проходит успешно
+        WebDriverManager.chromedriver().setup();
+        this.webDriver = new ChromeDriver();
         this.webDriver.get(mainPageUrl);
     }
 
@@ -63,6 +62,7 @@ public class OrderPageTests {
     public void tearDown() {
         this.webDriver.quit();
     }
+
     @Test
     public void orderWithHeaderButtonWhenSuccess() {
         MainPage mainPage = new MainPage(this.webDriver);
@@ -78,6 +78,7 @@ public class OrderPageTests {
                 containsString(this.expectedOrderSuccessText)
         );
     }
+
     @Test
     public void orderWithBodyButtonWhenSuccess() {
         MainPage mainPage = new MainPage(this.webDriver);
@@ -93,6 +94,7 @@ public class OrderPageTests {
                 containsString(this.expectedOrderSuccessText)
         );
     }
+
     private void makeOrder(OrderPage orderPage) {
         orderPage.waitForLoadForm();
 

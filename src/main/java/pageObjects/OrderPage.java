@@ -32,64 +32,81 @@ public class OrderPage {
     public OrderPage(WebDriver webDriver) {
         this.webDriver = webDriver;
     }
+
     public void waitForLoadForm() {
         new WebDriverWait(this.webDriver, 3)
                 .until(ExpectedConditions.visibilityOf(this.webDriver.findElement(this.orderForm)));
     }
+
     private void waitForElementLoad(By elementToLoad) {
         new WebDriverWait(this.webDriver, 3)
                 .until(ExpectedConditions.visibilityOf(this.webDriver.findElement(elementToLoad)));
 
     }
+
     public void setName(String name) {
         this.webDriver.findElement(this.nameInput).sendKeys(name);
     }
+
     public void setSurname(String surname) {
         this.webDriver.findElement(this.surnameInput).sendKeys(surname);
     }
+
     public void setAddress(String address) {
         this.webDriver.findElement(this.addressInput).sendKeys(address);
     }
+
     public void setMetro(String metro) {
         this.webDriver.findElement(this.metroInput).sendKeys(metro);
         this.waitForElementLoad(this.metroList);
         this.chooseElementFromDropdown(this.metroListItems, metro);
     }
+
     public void setPhone(String phone) {
         this.webDriver.findElement(this.phoneInput).sendKeys(phone);
     }
+
     public void clickNextButton() {
         this.webDriver.findElement(this.nextButton).click();
     }
+
     public void setDate(String date) {
         this.webDriver.findElement(this.dateInput).sendKeys(date);
         this.waitForElementLoad(this.dateSelected);
         this.clickDateSelected();
     }
+
     public void setTerm(String termToChoose) {
         this.clickTermDropdown();
         this.chooseElementFromDropdown(this.termDropdownOption, termToChoose);
     }
+
     public void setColor(String colorToChoose) {
         this.chooseElementFromDropdown(this.colorLabels, colorToChoose);
     }
+
     public void setComment(String comment) {
         this.webDriver.findElement(this.commentInput).sendKeys(comment);
     }
+
     public void makeOrder() {
         this.clickOrderButton();
         this.waitForElementLoad(this.acceptOrderButton);
         this.clickAcceptOrderButton();
     }
+
     public String getNewOrderSuccessMessage() {
         return this.webDriver.findElement(this.newOrderSuccessMessage).getText();
     }
+
     private void clickOrderButton() {
         this.webDriver.findElement(this.orderButton).click();
     }
+
     private void clickAcceptOrderButton() {
         this.webDriver.findElement(this.acceptOrderButton).click();
     }
+
     private void chooseElementFromDropdown(By dropdownElements, String elementToChoose) {
         List<WebElement> elementsFiltered = this.webDriver.findElements(dropdownElements);
         for (WebElement element : elementsFiltered) {
@@ -99,9 +116,11 @@ public class OrderPage {
             }
         }
     }
+
     private void clickDateSelected() {
         this.webDriver.findElement(this.dateSelected).click();
     }
+
     private void clickTermDropdown() {
         this.webDriver.findElement(this.termDropdownRoot).click();
     }
