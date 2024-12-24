@@ -1,4 +1,4 @@
-package samocatTest;
+package ru.samocat.test;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.hamcrest.MatcherAssert;
@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import pageObjects.MainPage;
+import ru.page.objects.MainPage;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.fail;
@@ -56,7 +56,7 @@ public class MainPageAccordionTests {
 
 
     @Test
-    public void checkAccordionIsCorrect() {
+    public void checkAccordionIsCorrectTest() {
         MainPage mainPage = new MainPage(this.webDriver);
 
         mainPage.clickOnCookieAcceptButton();

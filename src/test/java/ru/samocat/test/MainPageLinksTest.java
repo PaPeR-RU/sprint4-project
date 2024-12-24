@@ -1,7 +1,6 @@
-package samocatTest;
+package ru.samocat.test;
 
-import org.openqa.selenium.firefox.FirefoxDriver;
-import pageObjects.MainPage;
+import ru.page.objects.MainPage;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -31,7 +30,7 @@ public class MainPageLinksTest {
     }
 
     @Test
-    public void checkYandexLinkIsCorrect() {
+    public void checkYandexLinkIsCorrectTest() {
         MainPage mainPage = new MainPage(this.webDriver);
 
         assertTrue(
@@ -46,7 +45,7 @@ public class MainPageLinksTest {
     }
 
     @Test
-    public void checkScooterLinkIsCorrect() {
+    public void checkScooterLinkIsCorrectTest() {
         MainPage mainPage = new MainPage(this.webDriver);
 
         assertTrue(

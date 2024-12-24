@@ -1,4 +1,4 @@
-package samocatTest;
+package ru.samocat.test;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.hamcrest.MatcherAssert;
@@ -9,8 +9,8 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import pageObjects.MainPage;
-import pageObjects.OrderPage;
+import ru.page.objects.MainPage;
+import ru.page.objects.OrderPage;
 
 import static org.hamcrest.CoreMatchers.containsString;
 
@@ -64,7 +64,7 @@ public class OrderPageTests {
     }
 
     @Test
-    public void orderWithHeaderButtonWhenSuccess() {
+    public void orderWithHeaderButtonWhenSuccessTest() {
         MainPage mainPage = new MainPage(this.webDriver);
         OrderPage orderPage = new OrderPage(this.webDriver);
 
@@ -80,7 +80,7 @@ public class OrderPageTests {
     }
 
     @Test
-    public void orderWithBodyButtonWhenSuccess() {
+    public void orderWithBodyButtonWhenSuccessTest() {
         MainPage mainPage = new MainPage(this.webDriver);
         OrderPage orderPage = new OrderPage(this.webDriver);
 
